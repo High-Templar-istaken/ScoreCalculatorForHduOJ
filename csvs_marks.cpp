@@ -15,11 +15,12 @@ int check(string &now){
 struct info{
 	int name,solved,rank,teamrank;
 	long double score;
-	info(int name,int solved,int rank,int teamrank=0){
+	info(int name,int solved,int rank,int teamrank=0,long double score=0){
 		this->name=name;
 		this->solved=solved;
 		this->rank=rank;
 		this->teamrank=teamrank;
+		this->score=score;
 	}
 	bool operator < (info kkk) const {
 		return rank<kkk.rank;
@@ -88,11 +89,11 @@ void SpawnStep(){
 		cout<<pool[o.name]<<","<<o.teamrank<<","<<o.solved<<",";
 		cout<<"=200*("<<teams.size()<<"-B"<<o.teamrank+1<<"+1)/"<<teams.size()<<"*C"<<o.teamrank+1<<"/F1"<<",";
 		o.score=200.0l*(teams.size()-o.teamrank+1)/teams.size()*o.solved/MaxSolved;
-		cout<<fixed<<setprecision(8)<<o.score<<endl;
+		cout<<fixed<<setprecision(10)<<o.score<<endl;
 	}
 }
 
-int main(int argc,char* argv[]){
+int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);cout.tie(nullptr);
 
